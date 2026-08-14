@@ -1,40 +1,81 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1020">
-  <meta name="description" content="PulseView turns YouTube content into a clear, real-time audience intelligence dashboard.">
-  <meta property="og:title" content="PulseView — Audience intelligence, at a glance"><meta property="og:description" content="Monitor video performance, engagement, and audience signals from one focused dashboard."><meta property="og:type" content="website">
-  <title>PulseView — Audience intelligence</title>
-  <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icons/icon-192.png"><link rel="preconnect" href="https://www.youtube-nocookie.com"><link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f7f2">
+  <meta name="description" content="Connect a fitness video, watch it, and see the essential workout data.">
+  <title>PulseView Fitness</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app-shell">
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="#overview"><span class="brand-mark"><i></i><i></i><i></i></span><span>PulseView</span></a>
-    <nav aria-label="Primary navigation">
-      <a class="nav-link active" href="#overview"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4v9Zm0 7h6v-5H4v5Zm10 0h6v-9h-6v9Zm0-16v5h6V4h-6Z"/></svg>Overview</a>
-      <a class="nav-link" href="#audience"><svg viewBox="0 0 24 24"><path d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13Zm8 0c-.29 0-.62.02-.97.05A4.22 4.22 0 0 1 17 16.5V19h6v-2.5c0-2.33-4.67-3.5-7-3.5Z"/></svg>Audience</a>
-      <a class="nav-link" href="#signals"><svg viewBox="0 0 24 24"><path d="M4 19h4V9H4v10Zm6 0h4V5h-4v14Zm6 0h4v-7h-4v7Z"/></svg>Signals</a>
-    </nav>
-    <div class="sidebar-footer"><div class="mini-status"><span></span>Systems healthy</div><button class="sidebar-action" id="themeToggle"><svg viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-16v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>Theme</button></div>
-  </aside>
-  <main class="main-content">
-    <header class="topbar"><button class="icon-button menu-button" id="menuButton" aria-label="Open navigation"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><div><p class="eyebrow">Workspace / Dashboard</p><h1>Audience pulse</h1></div><div class="top-actions"><span class="demo-pill" id="modeBadge"><span></span>Demo live</span><button class="button button-ghost" id="refreshButton"><svg viewBox="0 0 24 24"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 4v5h5m-5 4a8.1 8.1 0 0 0 15.5 2M20 20v-5h-5"/></svg>Refresh</button></div></header>
-    <div class="dashboard" id="overview">
-      <section class="hero-panel"><div class="hero-copy"><div class="label"><span></span>Live intelligence</div><h2>See what your audience feels, <em>as it happens.</em></h2><p>Drop in any public YouTube video or explore Demo mode to reveal engagement, sentiment, and momentum in one calm view.</p></div><form class="source-form" id="videoForm"><label for="videoUrl">YouTube video URL</label><div class="input-row"><div class="url-input"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><input id="videoUrl" type="url" placeholder="https://youtube.com/watch?v=…"></div><button class="button button-primary">Analyze video</button><button class="button button-secondary" id="demoButton" type="button">Try demo</button></div><p class="form-message" id="formMessage" role="status">Public videos and live streams are supported.</p></form></section>
-      <section class="metrics-grid" aria-label="Key metrics">
-        <article class="metric-card"><div class="metric-top"><span>Active viewers</span><i class="metric-icon indigo">◉</i></div><strong id="viewerMetric">12,842</strong><p><b>↑ 18.4%</b> vs. previous hour</p></article>
-        <article class="metric-card"><div class="metric-top"><span>Engagement rate</span><i class="metric-icon cyan">♥</i></div><strong id="engagementMetric">8.7%</strong><p><b>↑ 2.1%</b> above channel avg.</p></article>
-        <article class="metric-card"><div class="metric-top"><span>Positive sentiment</span><i class="metric-icon green">✓</i></div><strong id="sentimentMetric">84%</strong><p><b>↑ 6.8%</b> strong response</p></article>
-        <article class="metric-card"><div class="metric-top"><span>Avg. watch time</span><i class="metric-icon amber">◷</i></div><strong id="watchMetric">18:42</strong><p><b>↑ 12.3%</b> high retention</p></article>
-      </section>
-      <section class="content-grid">
-        <article class="panel video-panel"><div class="panel-header"><div><p class="eyebrow">Now analyzing</p><h3 id="videoTitle">Product launch keynote — Demo</h3></div><span class="live-chip"><i></i>Live</span></div><div class="video-frame-wrap"><iframe id="videoFrame" title="YouTube video player" src="https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></article>
-        <article class="panel signal-panel" id="signals"><div class="panel-header"><div><p class="eyebrow">Conversation pulse</p><h3>What viewers are saying</h3></div><span class="count-badge">1,248 signals</span></div><div class="sentiment-stack"><div class="sentiment-row"><span><i class="sentiment-icon positive">+</i>Positive</span><b>84%</b></div><div class="progress"><i class="positive-bar" style="width:84%"></i></div><div class="sentiment-row"><span><i class="sentiment-icon neutral">•</i>Neutral</span><b>11%</b></div><div class="progress"><i class="neutral-bar" style="width:11%"></i></div><div class="sentiment-row"><span><i class="sentiment-icon negative">−</i>Needs attention</span><b>5%</b></div><div class="progress"><i class="negative-bar" style="width:5%"></i></div></div><div class="insight-callout"><span>✦</span><div><b>Momentum is building</b><p>Feature reveals are driving the strongest positive response.</p></div></div></article>
-        <article class="panel chart-panel" id="audience"><div class="panel-header"><div><p class="eyebrow">Last 60 minutes</p><h3>Audience momentum</h3></div><div class="legend"><span><i></i>Viewers</span><span><i></i>Engagement</span></div></div><div class="chart-wrap"><canvas id="momentumChart" aria-label="Audience momentum chart"></canvas></div><div class="chart-axis"><span>60m ago</span><span>45m</span><span>30m</span><span>15m</span><span>Now</span></div></article>
-        <article class="panel moments-panel"><div class="panel-header"><div><p class="eyebrow">AI-detected</p><h3>Top moments</h3></div><button class="text-button">View all</button></div><ol class="moments-list"><li><button data-seconds="86"><span>01</span><span><b>Core feature reveal</b><small>Strongest engagement spike</small></span><time>01:26</time></button></li><li><button data-seconds="174"><span>02</span><span><b>Live workflow demo</b><small>Most replayed section</small></span><time>02:54</time></button></li><li><button data-seconds="247"><span>03</span><span><b>Pricing announcement</b><small>Highest comment velocity</small></span><time>04:07</time></button></li></ol></article>
-      </section>
-    </div><footer><span>PulseView V1</span><span>Local-first demo analytics • No account required</span></footer>
+  <main class="app">
+    <header>
+      <a class="brand" href="./" aria-label="PulseView Fitness home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>PulseView</span>
+      </a>
+      <span class="connected"><i></i>Connected</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">Fitness video companion</p>
+      <h1>Move. Watch. Track.</h1>
+      <p>Connect a YouTube fitness video and keep only the workout data that matters.</p>
+    </section>
+
+    <section class="player-card" aria-labelledby="videoTitle">
+      <div class="video-wrap">
+        <iframe id="videoFrame" title="Fitness video player" src="https://www.youtube-nocookie.com/embed/UBMk30rjy0o?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <div>
+          <p class="eyebrow">Ready to play</p>
+          <h2 id="videoTitle">20 min full body workout</h2>
+          <p id="videoSource">Pamela Reif • No equipment</p>
+        </div>
+        <span class="duration">20 min</span>
+      </div>
+    </section>
+
+    <section class="actions" aria-label="Video actions">
+      <button class="action active" id="connectButton" type="button">
+        <span class="action-icon">↗</span><span><b>Connect</b><small>YouTube link</small></span>
+      </button>
+      <button class="action" id="dataButton" type="button" aria-expanded="false">
+        <span class="action-icon">⌁</span><span><b>Watch data</b><small>Workout details</small></span>
+      </button>
+      <button class="action" id="airplayButton" type="button">
+        <span class="action-icon airplay-icon">△</span><span><b>AirPlay</b><small>Watch on TV</small></span>
+      </button>
+    </section>
+
+    <form class="connect-panel" id="connectPanel">
+      <label for="videoUrl">Fitness YouTube link</label>
+      <div class="connect-row">
+        <input id="videoUrl" type="url" inputmode="url" autocomplete="url" placeholder="Paste a YouTube link" value="https://www.youtube.com/watch?v=UBMk30rjy0o">
+        <button type="submit">Connect</button>
+      </div>
+      <p id="message" role="status">Public YouTube videos, Shorts, and live links work here.</p>
+    </form>
+
+    <section class="data-panel" id="dataPanel" hidden>
+      <div><span>Workout</span><strong>Full body</strong></div>
+      <div><span>Duration</span><strong>20 min</strong></div>
+      <div><span>Equipment</span><strong>None</strong></div>
+      <div><span>Level</span><strong>All levels</strong></div>
+    </section>
+
+    <aside class="airplay-panel" id="airplayPanel" hidden>
+      <b>AirPlay from the video player</b>
+      <p>Start the video, open its player controls, then choose the AirPlay icon and your TV. Your Apple device and TV must be on the same Wi-Fi network.</p>
+    </aside>
   </main>
-</div><div class="toast" id="toast" role="status"></div><script type="module" src="app.js"></script>
-</body></html>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
