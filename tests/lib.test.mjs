@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{parseYouTubeId,buildEmbedUrl,demoMetrics,DEMO_VIDEO_ID}from'../lib.js';
+test('extracts supported YouTube URLs',()=>{for(const v of[`https://youtube.com/watch?v=${DEMO_VIDEO_ID}`,`https://youtu.be/${DEMO_VIDEO_ID}`,`https://youtube.com/embed/${DEMO_VIDEO_ID}`,`https://youtube.com/shorts/${DEMO_VIDEO_ID}`,`https://youtube.com/live/${DEMO_VIDEO_ID}`,DEMO_VIDEO_ID])assert.equal(parseYouTubeId(v),DEMO_VIDEO_ID)});
+test('rejects malformed inputs',()=>{for(const v of['','https://example.com/watch?v=M7lc1UVf-VE','javascript:alert(1)','too-short'])assert.equal(parseYouTubeId(v),null)});
+test('builds privacy-enhanced embeds',()=>{assert.equal(buildEmbedUrl(DEMO_VIDEO_ID),`https://www.youtube-nocookie.com/embed/${DEMO_VIDEO_ID}?rel=0&modestbranding=1`);assert.match(buildEmbedUrl(DEMO_VIDEO_ID,86),/start=86/);assert.throws(()=>buildEmbedUrl('bad'))});
+test('formats deterministic demo metrics',()=>{assert.deepEqual(demoMetrics(0),{viewers:'12,842',engagement:'8.7%',sentiment:'84%',watchTime:'18:42'});assert.equal(demoMetrics(7).viewers,demoMetrics(0).viewers)});
